@@ -6,7 +6,7 @@ R scripts to reproduce all analyses from the article can be found in the `/R` fo
 
 ## Data dictionary `resultsindicators.csv`
 
-In the `/data` folder, the file `resultsindicators.csv` contains all data used to produce the results. These are the annual observations of national-level quality indicator results in the observation period from 2013 to 2020 for all quality indicators in the analysis.
+In the `/data` folder, the file `data_indicators.csv` contains all data used to produce the results. These are the annual observations of national-level quality indicator results in the observation period from 2013 to 2020 for all indicators in the analysis.
 
 ## R session info
 
