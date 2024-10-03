@@ -6,7 +6,7 @@ This repository contains data and analysis code to reproduce results from the ar
 
 R scripts to reproduce all analyses from the article can be found in the `/R` folder. Results are exported to `/results`.
 
-## Data dictionary `resultsindicators.csv`
+## Data dictionary `data_indicators.csv`
 
 In the `/data` folder, the file `data_indicators.csv` contains all data used to produce the results. These are the annual observations of national-level quality indicator results in the observation period from 2013 to 2020 for all indicators in the analysis.
 
