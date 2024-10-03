@@ -2,6 +2,10 @@
 
 This repository contains data and analysis code to reproduce results from the article **"Estimating the causal effect of a quality assurance program on quality of care in Germany"**.
 
+<div style="display: flex;"> 
+  <img src="results/figure_did_results.png" style="height: 300px;"> 
+</div> 
+
 ## R scripts
 
 R scripts to reproduce all analyses from the article can be found in the `/R` folder. Results are exported to `/results`.
