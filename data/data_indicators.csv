@@ -1,12 +1,12 @@
 year;indic_id;indic_descr;indic_type;clin_area;o;n;o_adverse;group
-2013;10211;Complete removal of the ovary or adnexa without pathological findings (reverse coded);I;Gynaecological surgery;2470;18276;2470;Program
-2013;1058;D-D time in emergency cesarean section > 20 min (reverse coded);P;Obstetrics;74;8142;74;Program
-2013;12874;Missing histology after isolated ovarian surgery with tissue removal (reverse coded);I;Gynaecological surgery;637;40553;637;Program
+2013;10211;Complete removal of the ovary or adnexa without pathological findings;I;Gynaecological surgery;2470;18276;2470;Program
+2013;1058;D-D time in emergency cesarean section > 20 min;P;Obstetrics;74;8142;74;Program
+2013;12874;Missing histology after isolated ovarian surgery with tissue removal;I;Gynaecological surgery;637;40553;637;Program
 2013;2005;First blood gas analysis or pulse oximetry within 8 hours after admission (reverse coded);P;Community-acquired pneumonia;252566;259737;7171;Control
 2013;2009;Antimicrobial therapy within 8 hours after hospitalization (reverse coded);P;Community-acquired pneumonia;210044;222050;12006;Control
 2013;2013;Early mobilization within 24 hours after admission for risk class 1 (CRB-65-SCORE = 1 or 2) (reverse coded);P;Community-acquired pneumonia;115627;127158;11531;Control
 2013;2028;Completely measured clinical stability criteria at discharge (reverse coded);P;Community-acquired pneumonia;154443;166311;11868;Control
-2013;2163;Primary axillary dissection in DCIS (reverse coded);I;Breast surgery;41;7087;41;Program
+2013;2163;Primary axillary dissection in DCIS;I;Breast surgery;41;7087;41;Program
 2013;318;Presence of a paediatrician at premature births (reverse coded);P;Obstetrics;22955;24033;1078;Program
 2013;330;Antenatal corticosteroid therapy in premature births with prepartum hospitalization for at least two calendar days (reverse coded);P;Obstetrics;6953;7235;282;Program
 2013;50045;Perioperative antibiotic prophylaxis in cesarean section delivery (reverse coded);P;Obstetrics;204814;210388;5574;Program
@@ -18,14 +18,14 @@ year;indic_id;indic_descr;indic_type;clin_area;o;n;o_adverse;group
 2013;52330;Intraoperative specimen sonography or x-ray with mammographic wire marking (reverse coded);P;Breast surgery;20628;21267;639;Program
 2013;603;Indication in asymptomatic carotid artery stenosis - open surgery (reverse coded);I;Carotid artery revascularization;14074;14473;399;Control
 2013;604;Indication in symptomatic carotid artery stenosis - open surgery (reverse coded);I;Carotid artery revascularization;9033;9139;106;Control
-2014;10211;Complete removal of the ovary or adnexa without pathological findings (reverse coded);I;Gynaecological surgery;2416;18086;2416;Program
-2014;1058;D-D time in emergency cesarean section > 20 min (reverse coded);P;Obstetrics;67;8830;67;Program
-2014;12874;Missing histology after isolated ovarian surgery with tissue removal (reverse coded);I;Gynaecological surgery;619;39466;619;Program
+2014;10211;Complete removal of the ovary or adnexa without pathological findings;I;Gynaecological surgery;2416;18086;2416;Program
+2014;1058;D-D time in emergency cesarean section > 20 min;P;Obstetrics;67;8830;67;Program
+2014;12874;Missing histology after isolated ovarian surgery with tissue removal;I;Gynaecological surgery;619;39466;619;Program
 2014;2005;First blood gas analysis or pulse oximetry within 8 hours after admission (reverse coded);P;Community-acquired pneumonia;252284;258049;5765;Control
 2014;2009;Antimicrobial therapy within 8 hours after hospitalization (reverse coded);P;Community-acquired pneumonia;204853;214925;10072;Control
 2014;2013;Early mobilization within 24 hours after admission for risk class 1 (CRB-65-SCORE = 1 or 2) (reverse coded);P;Community-acquired pneumonia;112755;121954;9199;Control
 2014;2028;Completely measured clinical stability criteria at discharge (reverse coded);P;Community-acquired pneumonia;153820;162376;8556;Control
-2014;2163;Primary axillary dissection in DCIS (reverse coded);I;Breast surgery;17;6848;17;Program
+2014;2163;Primary axillary dissection in DCIS;I;Breast surgery;17;6848;17;Program
 2014;318;Presence of a paediatrician at premature births (reverse coded);P;Obstetrics;24065;25143;1078;Program
 2014;330;Antenatal corticosteroid therapy in premature births with prepartum hospitalization for at least two calendar days (reverse coded);P;Obstetrics;7329;7602;273;Program
 2014;50045;Perioperative antibiotic prophylaxis in cesarean section delivery (reverse coded);P;Obstetrics;216805;221289;4484;Program
@@ -37,14 +37,14 @@ year;indic_id;indic_descr;indic_type;clin_area;o;n;o_adverse;group
 2014;52330;Intraoperative specimen sonography or x-ray with mammographic wire marking (reverse coded);P;Breast surgery;22357;22809;452;Program
 2014;603;Indication in asymptomatic carotid artery stenosis - open surgery (reverse coded);I;Carotid artery revascularization;15066;15390;324;Control
 2014;604;Indication in symptomatic carotid artery stenosis - open surgery (reverse coded);I;Carotid artery revascularization;8771;8859;88;Control
-2015;10211;Complete removal of the ovary or adnexa without pathological findings (reverse coded);I;Gynaecological surgery;1975;16406;1975;Program
-2015;1058;D-D time in emergency cesarean section > 20 min (reverse coded);P;Obstetrics;44;9126;44;Program
-2015;12874;Missing histology after isolated ovarian surgery with tissue removal (reverse coded);I;Gynaecological surgery;594;38761;594;Program
+2015;10211;Complete removal of the ovary or adnexa without pathological findings;I;Gynaecological surgery;1975;16406;1975;Program
+2015;1058;D-D time in emergency cesarean section > 20 min;P;Obstetrics;44;9126;44;Program
+2015;12874;Missing histology after isolated ovarian surgery with tissue removal;I;Gynaecological surgery;594;38761;594;Program
 2015;2005;First blood gas analysis or pulse oximetry within 8 hours after admission (reverse coded);P;Community-acquired pneumonia;284000;289302;5302;Control
 2015;2009;Antimicrobial therapy within 8 hours after hospitalization (reverse coded);P;Community-acquired pneumonia;228092;238716;10624;Control
 2015;2013;Early mobilization within 24 hours after admission for risk class 1 (CRB-65-SCORE = 1 or 2) (reverse coded);P;Community-acquired pneumonia;128626;137916;9290;Control
 2015;2028;Completely measured clinical stability criteria at discharge (reverse coded);P;Community-acquired pneumonia;170752;179368;8616;Control
-2015;2163;Primary axillary dissection in DCIS (reverse coded);I;Breast surgery;10;6622;10;Program
+2015;2163;Primary axillary dissection in DCIS;I;Breast surgery;10;6622;10;Program
 2015;318;Presence of a paediatrician at premature births (reverse coded);P;Obstetrics;24695;25763;1068;Program
 2015;330;Antenatal corticosteroid therapy in premature births with prepartum hospitalization for at least two calendar days (reverse coded);P;Obstetrics;7420;7761;341;Program
 2015;50045;Perioperative antibiotic prophylaxis in cesarean section delivery (reverse coded);P;Obstetrics;220421;224419;3998;Program
@@ -56,14 +56,14 @@ year;indic_id;indic_descr;indic_type;clin_area;o;n;o_adverse;group
 2015;52330;Intraoperative specimen sonography or x-ray with mammographic wire marking (reverse coded);P;Breast surgery;17683;18091;408;Program
 2015;603;Indication in asymptomatic carotid artery stenosis - open surgery (reverse coded);I;Carotid artery revascularization;14311;14563;252;Control
 2015;604;Indication in symptomatic carotid artery stenosis - open surgery (reverse coded);I;Carotid artery revascularization;8869;8955;86;Control
-2016;10211;Complete removal of the ovary or adnexa without pathological findings (reverse coded);I;Gynaecological surgery;1888;16400;1888;Program
-2016;1058;D-D time in emergency cesarean section > 20 min (reverse coded);P;Obstetrics;32;9930;32;Program
-2016;12874;Missing histology after isolated ovarian surgery with tissue removal (reverse coded);I;Gynaecological surgery;514;38700;514;Program
+2016;10211;Complete removal of the ovary or adnexa without pathological findings;I;Gynaecological surgery;1888;16400;1888;Program
+2016;1058;D-D time in emergency cesarean section > 20 min;P;Obstetrics;32;9930;32;Program
+2016;12874;Missing histology after isolated ovarian surgery with tissue removal;I;Gynaecological surgery;514;38700;514;Program
 2016;2005;First blood gas analysis or pulse oximetry within 8 hours after admission (reverse coded);P;Community-acquired pneumonia;266812;271352;4540;Control
 2016;2009;Antimicrobial therapy within 8 hours after hospitalization (reverse coded);P;Community-acquired pneumonia;224985;235003;10018;Control
 2016;2013;Early mobilization within 24 hours after admission for risk class 1 (CRB-65-SCORE = 1 or 2) (reverse coded);P;Community-acquired pneumonia;122674;131016;8342;Control
 2016;2028;Completely measured clinical stability criteria at discharge (reverse coded);P;Community-acquired pneumonia;169904;177207;7303;Control
-2016;2163;Primary axillary dissection in DCIS (reverse coded);I;Breast surgery;8;6617;8;Program
+2016;2163;Primary axillary dissection in DCIS;I;Breast surgery;8;6617;8;Program
 2016;318;Presence of a paediatrician at premature births (reverse coded);P;Obstetrics;25657;26708;1051;Program
 2016;330;Antenatal corticosteroid therapy in premature births with prepartum hospitalization for at least two calendar days (reverse coded);P;Obstetrics;7622;7918;296;Program
 2016;50045;Perioperative antibiotic prophylaxis in cesarean section delivery (reverse coded);P;Obstetrics;233713;236742;3029;Program
@@ -75,14 +75,14 @@ year;indic_id;indic_descr;indic_type;clin_area;o;n;o_adverse;group
 2016;52330;Intraoperative specimen sonography or x-ray with mammographic wire marking (reverse coded);P;Breast surgery;19068;19354;286;Program
 2016;603;Indication in asymptomatic carotid artery stenosis - open surgery (reverse coded);I;Carotid artery revascularization;14158;14315;157;Control
 2016;604;Indication in symptomatic carotid artery stenosis - open surgery (reverse coded);I;Carotid artery revascularization;9102;9130;28;Control
-2017;10211;Complete removal of the ovary or adnexa without pathological findings (reverse coded);I;Gynaecological surgery;1407;15737;1407;Program
-2017;1058;D-D time in emergency cesarean section > 20 min (reverse coded);P;Obstetrics;28;10241;28;Program
-2017;12874;Missing histology after isolated ovarian surgery with tissue removal (reverse coded);I;Gynaecological surgery;445;37315;445;Program
+2017;10211;Complete removal of the ovary or adnexa without pathological findings;I;Gynaecological surgery;1407;15737;1407;Program
+2017;1058;D-D time in emergency cesarean section > 20 min;P;Obstetrics;28;10241;28;Program
+2017;12874;Missing histology after isolated ovarian surgery with tissue removal;I;Gynaecological surgery;445;37315;445;Program
 2017;2005;First blood gas analysis or pulse oximetry within 8 hours after admission (reverse coded);P;Community-acquired pneumonia;275976;280368;4392;Control
 2017;2009;Antimicrobial therapy within 8 hours after hospitalization (reverse coded);P;Community-acquired pneumonia;230230;241662;11432;Control
 2017;2013;Early mobilization within 24 hours after admission for risk class 1 (CRB-65-SCORE = 1 or 2) (reverse coded);P;Community-acquired pneumonia;130793;139134;8341;Control
 2017;2028;Completely measured clinical stability criteria at discharge (reverse coded);P;Community-acquired pneumonia;171424;179340;7916;Control
-2017;2163;Primary axillary dissection in DCIS (reverse coded);I;Breast surgery;4;6590;4;Program
+2017;2163;Primary axillary dissection in DCIS;I;Breast surgery;4;6590;4;Program
 2017;318;Presence of a paediatrician at premature births (reverse coded);P;Obstetrics;26013;26825;812;Program
 2017;330;Antenatal corticosteroid therapy in premature births with prepartum hospitalization for at least two calendar days (reverse coded);P;Obstetrics;7846;8074;228;Program
 2017;50045;Perioperative antibiotic prophylaxis in cesarean section delivery (reverse coded);P;Obstetrics;235025;237327;2302;Program
@@ -94,14 +94,14 @@ year;indic_id;indic_descr;indic_type;clin_area;o;n;o_adverse;group
 2017;52330;Intraoperative specimen sonography or x-ray with mammographic wire marking (reverse coded);P;Breast surgery;19011;19158;147;Program
 2017;603;Indication in asymptomatic carotid artery stenosis - open surgery (reverse coded);I;Carotid artery revascularization;13864;14009;145;Control
 2017;604;Indication in symptomatic carotid artery stenosis - open surgery (reverse coded);I;Carotid artery revascularization;9381;9398;17;Control
-2018;10211;Complete removal of the ovary or adnexa without pathological findings (reverse coded);I;Gynaecological surgery;1183;15485;1183;Program
-2018;1058;D-D time in emergency cesarean section > 20 min (reverse coded);P;Obstetrics;32;9873;32;Program
-2018;12874;Missing histology after isolated ovarian surgery with tissue removal (reverse coded);I;Gynaecological surgery;447;36783;447;Program
+2018;10211;Complete removal of the ovary or adnexa without pathological findings;I;Gynaecological surgery;1183;15485;1183;Program
+2018;1058;D-D time in emergency cesarean section > 20 min;P;Obstetrics;32;9873;32;Program
+2018;12874;Missing histology after isolated ovarian surgery with tissue removal;I;Gynaecological surgery;447;36783;447;Program
 2018;2005;First blood gas analysis or pulse oximetry within 8 hours after admission (reverse coded);P;Community-acquired pneumonia;284665;289020;4355;Control
 2018;2009;Antimicrobial therapy within 8 hours after hospitalization (reverse coded);P;Community-acquired pneumonia;236769;248970;12201;Control
 2018;2013;Early mobilization within 24 hours after admission for risk class 1 (CRB-65-SCORE = 1 or 2) (reverse coded);P;Community-acquired pneumonia;133459;142174;8715;Control
 2018;2028;Completely measured clinical stability criteria at discharge (reverse coded);P;Community-acquired pneumonia;176421;184614;8193;Control
-2018;2163;Primary axillary dissection in DCIS (reverse coded);I;Breast surgery;6;6772;6;Program
+2018;2163;Primary axillary dissection in DCIS;I;Breast surgery;6;6772;6;Program
 2018;318;Presence of a paediatrician at premature births (reverse coded);P;Obstetrics;24819;25541;722;Program
 2018;330;Antenatal corticosteroid therapy in premature births with prepartum hospitalization for at least two calendar days (reverse coded);P;Obstetrics;7489;7677;188;Program
 2018;50045;Perioperative antibiotic prophylaxis in cesarean section delivery (reverse coded);P;Obstetrics;229352;231260;1908;Program
@@ -113,14 +113,14 @@ year;indic_id;indic_descr;indic_type;clin_area;o;n;o_adverse;group
 2018;52330;Intraoperative specimen sonography or x-ray with mammographic wire marking (reverse coded);P;Breast surgery;19134;19274;140;Program
 2018;603;Indication in asymptomatic carotid artery stenosis - open surgery (reverse coded);I;Carotid artery revascularization;13881;14027;146;Control
 2018;604;Indication in symptomatic carotid artery stenosis - open surgery (reverse coded);I;Carotid artery revascularization;9310;9329;19;Control
-2019;10211;Complete removal of the ovary or adnexa without pathological findings (reverse coded);I;Gynaecological surgery;1282;16328;1282;Program
-2019;1058;D-D time in emergency cesarean section > 20 min (reverse coded);P;Obstetrics;32;10172;32;Program
-2019;12874;Missing histology after isolated ovarian surgery with tissue removal (reverse coded);I;Gynaecological surgery;353;37641;353;Program
+2019;10211;Complete removal of the ovary or adnexa without pathological findings;I;Gynaecological surgery;1282;16328;1282;Program
+2019;1058;D-D time in emergency cesarean section > 20 min;P;Obstetrics;32;10172;32;Program
+2019;12874;Missing histology after isolated ovarian surgery with tissue removal;I;Gynaecological surgery;353;37641;353;Program
 2019;2005;First blood gas analysis or pulse oximetry within 8 hours after admission (reverse coded);P;Community-acquired pneumonia;251441;255038;3597;Control
 2019;2009;Antimicrobial therapy within 8 hours after hospitalization (reverse coded);P;Community-acquired pneumonia;210296;220750;10454;Control
 2019;2013;Early mobilization within 24 hours after admission for risk class 1 (CRB-65-SCORE = 1 or 2) (reverse coded);P;Community-acquired pneumonia;120342;127692;7350;Control
 2019;2028;Completely measured clinical stability criteria at discharge (reverse coded);P;Community-acquired pneumonia;160019;166620;6601;Control
-2019;2163;Primary axillary dissection in DCIS (reverse coded);I;Breast surgery;8;7203;8;Program
+2019;2163;Primary axillary dissection in DCIS;I;Breast surgery;8;7203;8;Program
 2019;318;Presence of a paediatrician at premature births (reverse coded);P;Obstetrics;24678;25389;711;Program
 2019;330;Antenatal corticosteroid therapy in premature births with prepartum hospitalization for at least two calendar days (reverse coded);P;Obstetrics;7440;7636;196;Program
 2019;50045;Perioperative antibiotic prophylaxis in cesarean section delivery (reverse coded);P;Obstetrics;229629;231746;2117;Program
@@ -132,14 +132,14 @@ year;indic_id;indic_descr;indic_type;clin_area;o;n;o_adverse;group
 2019;52330;Intraoperative specimen sonography or x-ray with mammographic wire marking (reverse coded);P;Breast surgery;19195;19302;107;Program
 2019;603;Indication in asymptomatic carotid artery stenosis - open surgery (reverse coded);I;Carotid artery revascularization;13885;14015;130;Control
 2019;604;Indication in symptomatic carotid artery stenosis - open surgery (reverse coded);I;Carotid artery revascularization;8740;8766;26;Control
-2020;10211;Complete removal of the ovary or adnexa without pathological findings (reverse coded);I;Gynaecological surgery;1073;13785;1073;Program
-2020;1058;D-D time in emergency cesarean section > 20 min (reverse coded);P;Obstetrics;31;10161;31;Program
-2020;12874;Missing histology after isolated ovarian surgery with tissue removal (reverse coded);I;Gynaecological surgery;318;32507;318;Program
+2020;10211;Complete removal of the ovary or adnexa without pathological findings;I;Gynaecological surgery;1073;13785;1073;Program
+2020;1058;D-D time in emergency cesarean section > 20 min;P;Obstetrics;31;10161;31;Program
+2020;12874;Missing histology after isolated ovarian surgery with tissue removal;I;Gynaecological surgery;318;32507;318;Program
 2020;2005;First blood gas analysis or pulse oximetry within 8 hours after admission (reverse coded);P;Community-acquired pneumonia;276662;280100;3438;Control
 2020;2009;Antimicrobial therapy within 8 hours after hospitalization (reverse coded);P;Community-acquired pneumonia;142372;152740;10368;Control
 2020;2013;Early mobilization within 24 hours after admission for risk class 1 (CRB-65-SCORE = 1 or 2) (reverse coded);P;Community-acquired pneumonia;111396;120243;8847;Control
 2020;2028;Completely measured clinical stability criteria at discharge (reverse coded);P;Community-acquired pneumonia;165391;171400;6009;Control
-2020;2163;Primary axillary dissection in DCIS (reverse coded);I;Breast surgery;7;6548;7;Program
+2020;2163;Primary axillary dissection in DCIS;I;Breast surgery;7;6548;7;Program
 2020;318;Presence of a paediatrician at premature births (reverse coded);P;Obstetrics;23063;23796;733;Program
 2020;330;Antenatal corticosteroid therapy in premature births with prepartum hospitalization for at least two calendar days (reverse coded);P;Obstetrics;6880;7124;244;Program
 2020;50045;Perioperative antibiotic prophylaxis in cesarean section delivery (reverse coded);P;Obstetrics;232000;234393;2393;Program
