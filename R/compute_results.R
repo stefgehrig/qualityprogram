@@ -6,6 +6,7 @@ library(ggtext)
 library(directlabels)
 library(scales)
 library(openxlsx)
+library(geomtextpath)
 library(marginaleffects)
 
 # load fonts and define colors
@@ -202,11 +203,11 @@ p_trends <- grp_year_means_se %>%
                 show.legend = FALSE) +
   geom_dl(aes(label= group, x = year,  y = estimate, col = group,
               group = group), position = position_nudge(x = -0.125, y = + 0.015),
-          method = list("first.points", cex = 0.9)) +
+          method = list("first.points", cex = 0.7)) +
   geom_vline(xintercept = 2016.5,  col = "grey30", linetype = 3) +
   geom_text(x = 2016.6, y = -2.6, label = "Program\nintroduction", check_overlap = TRUE,
-            col = "grey30", hjust = 0, size = 3.5, family = "Segoe UI") +
-  theme_minimal(12) + 
+            col = "grey30", hjust = 0, size = 3, family = "Segoe UI") +
+  theme_minimal(11) + 
   scale_x_continuous(limits = c(2012.5,2020.5), breaks = 2013:2020) +
   scale_y_continuous(limits = c(-4,-2.5), breaks = seq(-4,-2.5,0.5),
                      sec.axis = sec_axis(transform=~plogis(.), name="Estimated<br>event proportion<br><span style = 'font-size:8pt'>for average quality indicator",
@@ -214,8 +215,6 @@ p_trends <- grp_year_means_se %>%
                                          breaks = plogis(seq(-4,-2,0.5)))) +
   theme(text = element_text(family = "Segoe UI"),
         panel.grid.minor.y = element_blank(),
-        legend.text = element_text(size = 9),
-        legend.title = element_text(size = 10),
         panel.grid.minor.x = element_blank(),
         panel.grid.major.x = element_blank(),
         axis.title.y = element_markdown(),
@@ -258,10 +257,10 @@ p_event <- year_diff_means_se %>%
   geom_hline(yintercept = 0, lty = 2) + 
   geom_vline(xintercept = 2016.5,  col = "grey30", linetype = 3) +
   geom_text(x = 2016.7, y = 0.2, label = "Program\nintroduction", check_overlap = TRUE,
-            col = "grey30", hjust = 0, size = 3.5, family = "Segoe UI") +
-  theme_minimal(12) + 
+            col = "grey30", hjust = 0, size = 3, family = "Segoe UI") +
+  theme_minimal(11) + 
   scale_x_continuous(limits = c(2012.5, 2020.5), breaks = 2013:2020) +
-  scale_y_continuous(limits = c(-0.8,0.3), breaks = seq(-0.7,0.2,0.1), labels = function(x) scales::comma(x, accuracy = 0.1)) +
+  scale_y_continuous(limits = c(-0.8,0.3), breaks = seq(-0.75,0.25,0.25), labels = function(x) scales::comma(x, accuracy = 0.1)) +
   theme(text = element_text(family = "Segoe UI"),
         axis.title.y = element_markdown(),
         panel.grid.minor.y = element_blank(),
@@ -290,19 +289,22 @@ p_riskratio <- grid %>%
   filter(!is.na(pred)) %>% 
   ggplot() + 
   geom_point(aes(x = Period,  y= pred, col = group), size = 2) + 
-  geom_line(aes(x = Period,  y= pred,  col = group, lty = world, group = paste0(world, group))) +
-  scale_y_continuous(breaks = seq(0,0.05,0.01), limits = c(0,0.052), labels = percent_format(), expand = c(0,0)) + 
+  geom_textline(aes(x = Period,  y= pred,  col = group, 
+                    label = world,
+                    lty = world, group = paste0(world, group)),
+                size = 3) +
+  scale_y_continuous(breaks = seq(0.01,0.05,0.01), limits = c(0,0.052), labels = percent_format(), expand = c(0,0)) + 
   labs(y = "Estimated<br>event proportion<br><span style = 'font-size:8pt'>for average patient",
        lty = "Scenario",
        col = "Group") + 
-  theme_minimal(12) + 
-  theme(legend.position = "bottom",
-        legend.text = element_text(size = 9),
-        legend.title = element_text(size = 10),
-        legend.background = element_blank(),
-        legend.spacing = unit(0.1, 'cm'),
-        legend.key.spacing.y = unit(0, 'cm'),
-        legend.box.background = element_rect(colour = "black"),
+  theme_minimal(11) + 
+  theme(legend.position = "none",
+        # legend.text = element_text(size = 8),
+        # legend.title = element_text(size = 10),
+        # legend.background = element_blank(),
+        # legend.spacing = unit(0, 'cm'),
+        # legend.key.spacing.y = unit(0, 'cm'),
+        # legend.box.background = element_rect(colour = "black"),
         text = element_text(family = "Segoe UI"),
         axis.title.y = element_markdown(),
         panel.grid.minor.y = element_blank(),
@@ -312,21 +314,26 @@ p_riskratio <- grid %>%
          col = guide_legend(nrow = 2)) + 
   scale_linetype_manual(values = c(1,2)) +
   scale_color_manual(values = mycols) + 
-  scale_x_discrete(expand = c(0.125,0.125))+
+  scale_x_discrete(expand = c(0.2,0.2))+
   geom_text(
     data = . %>% filter(Period == "Post" & group == "Program"),
-    aes(x = Period, y = pred, label = paste0(format(round(pred*100, 2), nsmall = 2), "%")),
-    hjust = 0, position = position_nudge(x = 0.05), check_overlap = TRUE,
-    size = 3.5,
+    aes(x = Period, y = pred, label = paste0(format(round(pred*100, 2), nsmall = 2), "%"), col = group),
+    position = position_nudge(y = 0.0035), check_overlap = TRUE,
+    size = 3,
     family = "Segoe UI"
-  ) 
+  ) +
+  geom_dl(aes(label= group, x = Period,  y = pred, col = group,
+              group = group), position = position_nudge(x = -0.07, y = 0.0005),
+          method = list("first.points", cex = 0.7))
 
-png("results/figure_did_results.png", width = 4400, height = 3600, res = 500)
+png("results/figure_did_results.png", width = 4200, height = 2900, res = 475)
 print(
-  p_trends / (p_event + p_riskratio) + plot_annotation(tag_levels = "A") &
+  p_trends / (p_event + p_riskratio) + plot_annotation(tag_levels = "A") + 
+    plot_layout(heights = c(1,1.25)) &
     theme(plot.tag = element_text(face = 'bold'))
 )
 dev.off()
+
 
 ##################################
 #### figure: population sizes ####
