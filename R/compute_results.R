@@ -299,12 +299,6 @@ p_riskratio <- grid %>%
        col = "Group") + 
   theme_minimal(11) + 
   theme(legend.position = "none",
-        # legend.text = element_text(size = 8),
-        # legend.title = element_text(size = 10),
-        # legend.background = element_blank(),
-        # legend.spacing = unit(0, 'cm'),
-        # legend.key.spacing.y = unit(0, 'cm'),
-        # legend.box.background = element_rect(colour = "black"),
         text = element_text(family = "Segoe UI"),
         axis.title.y = element_markdown(),
         panel.grid.minor.y = element_blank(),
