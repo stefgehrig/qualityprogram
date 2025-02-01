@@ -209,10 +209,7 @@ p_trends <- grp_year_means_se %>%
             col = "grey30", hjust = 0, size = 3, family = "Segoe UI") +
   theme_minimal(11) + 
   scale_x_continuous(limits = c(2012.5,2020.5), breaks = 2013:2020) +
-  scale_y_continuous(limits = c(-4,-2.5), breaks = seq(-4,-2.5,0.5),
-                     sec.axis = sec_axis(transform=~plogis(.), name="Estimated<br>event proportion<br><span style = 'font-size:8pt'>for average quality indicator",
-                                         labels = percent_format(),
-                                         breaks = plogis(seq(-4,-2,0.5)))) +
+  scale_y_continuous(limits = c(-4,-2.5), breaks = seq(-4,-2.5,0.5)) +
   theme(text = element_text(family = "Segoe UI"),
         panel.grid.minor.y = element_blank(),
         panel.grid.minor.x = element_blank(),
@@ -294,7 +291,7 @@ p_riskratio <- grid %>%
                     lty = world, group = paste0(world, group)),
                 size = 3) +
   scale_y_continuous(breaks = seq(0.01,0.05,0.01), limits = c(0,0.052), labels = percent_format(), expand = c(0,0)) + 
-  labs(y = "Estimated<br>event proportion<br><span style = 'font-size:8pt'>for average patient",
+  labs(y = "Estimated event proportion<br><span style = 'font-size:8pt'>for average patient",
        lty = "Scenario",
        col = "Group") + 
   theme_minimal(11) + 
@@ -320,7 +317,7 @@ p_riskratio <- grid %>%
               group = group), position = position_nudge(x = -0.07, y = 0.0005),
           method = list("first.points", cex = 0.7))
 
-png("results/figure_did_results.png", width = 4200, height = 2900, res = 475)
+png("results/figure_did_results.png", width = 4200, height = 2900, res = 485)
 print(
   p_trends / (p_event + p_riskratio) + plot_annotation(tag_levels = "A") + 
     plot_layout(heights = c(1,1.25)) &
