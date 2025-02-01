@@ -9,7 +9,7 @@ library(openxlsx)
 library(marginaleffects)
 
 # load fonts and define colors
-extrafont::loadfonts("win", quiet = TRUE)
+extrafont::loadfonts(quiet = TRUE)
 mycols <- c("coral4", "steelblue")
 
 # import data
@@ -197,12 +197,15 @@ p_trends <- grp_year_means_se %>%
   geom_line(aes(x = year,  y = estimate, group = group, col = group)) + 
   geom_ribbon(aes(x = year, ymin = conf.low, ymax = conf.high, fill = group),
               alpha = 0.2, show.legend = FALSE) +
+  geom_errorbar(aes(x = year, ymin = conf.low, ymax = conf.high, col = group), 
+                width = 0,
+                show.legend = FALSE) +
   geom_dl(aes(label= group, x = year,  y = estimate, col = group,
               group = group), position = position_nudge(x = -0.125, y = + 0.015),
           method = list("first.points", cex = 0.9)) +
-  geom_vline(xintercept = 2016.5,  col = "grey30", linetype = 2,) +
+  geom_vline(xintercept = 2016.5,  col = "grey30", linetype = 3) +
   geom_text(x = 2016.6, y = -2.6, label = "Program\nintroduction", check_overlap = TRUE,
-            col = "grey30", hjust = 0, size = 4, family = "Segoe UI") +
+            col = "grey30", hjust = 0, size = 3.5, family = "Segoe UI") +
   theme_minimal(12) + 
   scale_x_continuous(limits = c(2012.5,2020.5), breaks = 2013:2020) +
   scale_y_continuous(limits = c(-4,-2.5), breaks = seq(-4,-2.5,0.5),
@@ -251,11 +254,11 @@ p_event <- year_diff_means_se %>%
   geom_point(aes(x = year, y = estimate), size = 2) + 
   geom_line(aes(x = year, y = estimate)) + 
   geom_errorbar(aes(x = year, ymin = conf.low, ymax = conf.high),
-                col = "black", width = 0.05) +
+                col = "black", width = 0) +
   geom_hline(yintercept = 0, lty = 2) + 
-  geom_vline(xintercept = 2016.5,  col = "grey30", linetype = 2) +
-  geom_text(x = 2016.6, y = 0.2, label = "Program\nintroduction", check_overlap = TRUE,
-            col = "grey30", hjust = 0, size = 4, family = "Segoe UI") +
+  geom_vline(xintercept = 2016.5,  col = "grey30", linetype = 3) +
+  geom_text(x = 2016.7, y = 0.2, label = "Program\nintroduction", check_overlap = TRUE,
+            col = "grey30", hjust = 0, size = 3.5, family = "Segoe UI") +
   theme_minimal(12) + 
   scale_x_continuous(limits = c(2012.5, 2020.5), breaks = 2013:2020) +
   scale_y_continuous(limits = c(-0.8,0.3), breaks = seq(-0.7,0.2,0.1), labels = function(x) scales::comma(x, accuracy = 0.1)) +
@@ -296,13 +299,18 @@ p_riskratio <- grid %>%
   theme(legend.position = "bottom",
         legend.text = element_text(size = 9),
         legend.title = element_text(size = 10),
+        legend.background = element_blank(),
+        legend.spacing = unit(0.1, 'cm'),
+        legend.key.spacing.y = unit(0, 'cm'),
+        legend.box.background = element_rect(colour = "black"),
         text = element_text(family = "Segoe UI"),
         axis.title.y = element_markdown(),
         panel.grid.minor.y = element_blank(),
         panel.grid.minor.x = element_blank(),
         panel.grid.major.x = element_blank()) + 
-  guides(linetype=guide_legend(nrow = 2),
-         col=guide_legend(nrow = 2)) + 
+  guides(linetype = guide_legend(nrow = 2),
+         col = guide_legend(nrow = 2)) + 
+  scale_linetype_manual(values = c(1,2)) +
   scale_color_manual(values = mycols) + 
   scale_x_discrete(expand = c(0.125,0.125))+
   geom_text(
@@ -313,12 +321,10 @@ p_riskratio <- grid %>%
     family = "Segoe UI"
   ) 
 
-png("results/figure_did_results.png", width = 4500, height = 3400, res = 490)
+png("results/figure_did_results.png", width = 4400, height = 3600, res = 500)
 print(
   p_trends / (p_event + p_riskratio) + plot_annotation(tag_levels = "A") &
-    theme(plot.tag = element_text(face = 'bold'),
-          legend.background = element_blank(),
-          legend.box.background = element_rect(colour = "black"))
+    theme(plot.tag = element_text(face = 'bold'))
 )
 dev.off()
 
