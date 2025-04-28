@@ -165,6 +165,68 @@ theta_att_se <- list(estimate = as.numeric(theta_att_dm$estimate),
                      ci95 = c(theta_att_dm$conf.low, theta_att_dm$conf.high))
 writeLines(capture.output(theta_att_se), "results/estimated_theta_att.txt")
 
+# estimate profited patients with confidence interval (aggregated)
+o_att_dm <- hypotheses(
+  m,
+  hypothesis = function(x) {
+    p <- predict(x, type = "response", newdata = grid)
+    
+    delta <- grid %>%
+      mutate(p = p) %>%
+      group_by(post, group == "Program") %>%
+      summarise(mean_p = mean(p), .groups = "drop_last") %>%
+      summarise(diff = diff(qlogis(mean_p)), .groups = "drop") %>%
+      summarise(delta = diff(diff)) %>%
+      pull(delta)
+    
+    o_att <- grid %>%
+      mutate(p = p) %>%
+      mutate(p_cf = plogis(qlogis(p) - delta)) %>%
+      filter(post, group == "Program") %>%
+      summarise(o_att = sum(p_cf * n) - sum(p * n)) %>%
+      pull(o_att)
+    
+    return(o_att)
+  }
+)
+
+o_att_se <- list(estimate = as.numeric(o_att_dm$estimate),
+                 ci95 = c(o_att_dm$conf.low, o_att_dm$conf.high))
+writeLines(capture.output(o_att_se), "results/estimated_o_att.txt")
+
+# estimate profited patients with confidence interval (per program indicator)
+os_att_dm <- hypotheses(
+  m,
+  hypothesis = function(x) {
+    p <- predict(x, type = "response", newdata = grid)
+    
+    delta <- grid %>%
+      mutate(p = p) %>%
+      group_by(post, group == "Program") %>%
+      summarise(mean_p = mean(p), .groups = "drop_last") %>%
+      summarise(diff = diff(qlogis(mean_p)), .groups = "drop") %>%
+      summarise(delta = diff(diff)) %>%
+      pull(delta)
+    
+    os_att <- grid %>%
+      mutate(p = p) %>%
+      mutate(p_cf = plogis(qlogis(p) - delta)) %>%
+      filter(post, group == "Program") %>%
+      group_by(indic_id) %>% 
+      summarise(os_att = sum(p_cf * n) - sum(p * n),
+                .groups = "drop") %>%
+      pull(os_att)
+    
+    return(os_att)
+  }
+)
+
+os_att_se <- tibble(qi = sort(unique(grid$indic_id[grid$group == "Program"])),
+                    estimate = as.numeric(os_att_dm$estimate),
+                    ci95_lwr = os_att_dm$conf.low,
+                    ci95_upr = os_att_dm$conf.high)
+writeLines(capture.output(os_att_se), "results/estimated_os_att.txt")
+
 ###################################################
 #### figure: difference-in-differences results ####
 ###################################################
@@ -325,7 +387,6 @@ print(
 )
 dev.off()
 
-
 ##################################
 #### figure: population sizes ####
 ##################################
@@ -354,6 +415,32 @@ p_popsizes <- df %>%
 
 png("results/figure_popsizes.png", width = 2700, height = 3750, res = 350)
 print(p_popsizes)
+dev.off()
+
+#####################################
+#### figure: number of hospitals ####
+#####################################
+p_hospitals <- df %>% 
+  mutate(ID = fct_reorder(factor(paste0("ID ", indic_id)), group != "Program")) %>% 
+  filter(year > 2013) %>% 
+  ggplot() + 
+  geom_line(aes(x = year, y = n_hospitals, col = group)) +
+  scale_color_manual(values = mycols) +
+  facet_wrap(~ ID, ncol = 2) +
+  theme_minimal(13) +
+  theme(legend.position = "bottom",
+        text = element_text(family = "Segoe UI"),
+        panel.grid.minor.y = element_blank(),
+        panel.grid.minor.x = element_blank()) +
+  labs(
+    col = "Group",
+    y = "Number of hospitals",
+    x = "Year"
+  ) +
+  scale_x_continuous(breaks = 2014:2020)
+
+png("results/figure_hospitals.png", width = 2700, height = 3750, res = 350)
+print(p_hospitals)
 dev.off()
 
 #############################
