@@ -14,7 +14,7 @@ R scripts to reproduce all analyses from the article can be found in the `/R` fo
 
 In the `/data` folder, the file `data_indicators.csv` contains all data used to produce the results. These are the annual observations of national-level quality indicator results in the observation period from 2013 to 2020 for all indicators in the analysis (final analysis data set).
 
-|Column name |Explanation                                                                                                                             |German name                                        |
+|Column name |Explanation                                                                                                                             |Official German name                               |
 |:-----------|:---------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------|
 |year        |Year of observation                                                                                                                     |Erfassungsjahr                                     |
 |indic_id    |Unique public ID of quality indicator                                                                                                   |ID                                                 |
