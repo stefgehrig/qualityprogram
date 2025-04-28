@@ -221,10 +221,10 @@ os_att_dm <- hypotheses(
   }
 )
 
-os_att_se <- tibble(qi = sort(unique(grid$indic_id[grid$group == "Program"])),
-                    estimate = as.numeric(os_att_dm$estimate),
-                    ci95_lwr = os_att_dm$conf.low,
-                    ci95_upr = os_att_dm$conf.high)
+os_att_se <- data.frame(indicator = sort(unique(grid$indic_id[grid$group == "Program"])),
+                        estimate = as.numeric(os_att_dm$estimate),
+                        ci95_lwr = os_att_dm$conf.low,
+                        ci95_upr = os_att_dm$conf.high)
 writeLines(capture.output(os_att_se), "results/estimated_os_att.txt")
 
 ###################################################
