@@ -8,6 +8,7 @@ library(scales)
 library(openxlsx)
 library(geomtextpath)
 library(marginaleffects)
+library(mgcv)
 
 # load fonts and define colors
 extrafont::loadfonts(quiet = TRUE)
@@ -89,7 +90,7 @@ p_indic_trends <- df %>%
   scale_fill_manual(values = mycols) + 
   scale_color_manual(values = mycols) + 
   facet_wrap(~ID, scales = "free_y", ncol = 3) + 
-  labs(x = "Year", y = "Estimated\nevent proportion (95% CI)",
+  labs(x = "Year", y = "Estimated event probability (95% CI)",
        col = "Group") + 
   guides(col = guide_legend(ncol = 1))
 
@@ -278,7 +279,7 @@ p_trends <- grp_year_means_se %>%
         panel.grid.major.x = element_blank(),
         axis.title.y = element_markdown(),
         legend.position = "none") + 
-  labs(y = "Estimated<br>event proportion (logit)<br><span style = 'font-size:8pt'>for average quality indicator",
+  labs(y = "Estimated<br>event probability (logit)<br><span style = 'font-size:8pt'>for average quality indicator",
        x = "Year",
        col = "Group") + 
   guides(col=guide_legend(nrow = 1)) + 
@@ -315,11 +316,11 @@ p_event <- year_diff_means_se %>%
                 col = "black", width = 0) +
   geom_hline(yintercept = 0, lty = 2) + 
   geom_vline(xintercept = 2016.5,  col = "grey30", linetype = 3) +
-  geom_text(x = 2016.7, y = 0.2, label = "Program\nintroduction", check_overlap = TRUE,
+  geom_text(x = 2016.7, y = 0.15, label = "Program\nintroduction", check_overlap = TRUE,
             col = "grey30", hjust = 0, size = 3, family = "Segoe UI") +
   theme_minimal(11) + 
   scale_x_continuous(limits = c(2012.5, 2020.5), breaks = 2013:2020) +
-  scale_y_continuous(limits = c(-0.8,0.3), breaks = seq(-0.75,0.25,0.25), labels = function(x) scales::comma(x, accuracy = 0.1)) +
+  scale_y_continuous(limits = c(-0.725,0.225), breaks = seq(-0.8,0.2,0.2)) +
   theme(text = element_text(family = "Segoe UI"),
         axis.title.y = element_markdown(),
         panel.grid.minor.y = element_blank(),
@@ -353,7 +354,7 @@ p_riskratio <- grid %>%
                     lty = world, group = paste0(world, group)),
                 size = 3) +
   scale_y_continuous(breaks = seq(0.01,0.05,0.01), limits = c(0,0.052), labels = percent_format(), expand = c(0,0)) + 
-  labs(y = "Estimated event proportion<br><span style = 'font-size:8pt'>for average patient",
+  labs(y = "Estimated event probability<br><span style = 'font-size:8pt'>for average patient",
        lty = "Scenario",
        col = "Group") + 
   theme_minimal(11) + 
@@ -441,6 +442,90 @@ p_hospitals <- df %>%
 
 png("results/figure_hospitals.png", width = 2700, height = 3750, res = 350)
 print(p_hospitals)
+dev.off()
+
+#######################################
+#### alternative data and analysis ####
+#######################################
+# import data
+df2 <- read_csv2(file = "data/data_hospitalreports.csv")
+
+# define factors and additional variables
+df2$group    <- factor(df2$group, levels = c("Program", "Control"))
+df2$indic_id <- factor(df2$indic_id)
+df2$year_fct <- factor(df2$year)
+df2$hospital <- factor(df2$hospital)
+
+# mixed logistic regression model
+m2 <- gam(cbind(o_adverse, n - o_adverse) ~ indic_id * year_fct + s(hospital, bs = "re"),
+          data = df2, family = binomial(link = "logit"), method = "REML",
+          control = list(nthreads = 15))
+
+# extract outputs
+gam.vcomp(m2) # SD: 0.776
+random_eff <- m2$coefficients[grepl("hospital", names(m2$coefficients))]
+length(unique(m2$model$hospital)) # 1,257
+length(random_eff) # 1,257
+
+# create grid
+grid <- expand_grid(
+  year_fct = df2 %>% pull(year_fct) %>% unique,
+  indic_id = df2 %>% pull(indic_id) %>% unique) %>%
+  left_join(df2 %>% group_by(year, year_fct, indic_id, group) %>% summarise(n = sum(n), .groups = "drop"), by = c("year_fct", "indic_id")) %>%
+  mutate(hospital = factor(1))
+
+# event plot
+year_diff_means_dm <- hypotheses(
+  predictions(m2, newdata = grid, type = "response", exclude = "s(hospital)"),
+  hypothesis = function(x) {
+    year_diff_means <- grid %>%
+      mutate(p = x$estimate) %>%
+      group_by(group, year) %>%
+      summarise(logit_mean_p = qlogis(mean(p)),
+                .groups = "drop") %>%
+      group_by(year) %>%
+      summarise(diff = -diff(logit_mean_p)) %>%
+      mutate(estimate = diff - diff[year == 2016], 
+             term = unique(year))
+    
+    return(year_diff_means)
+  }
+)
+
+year_diff_means_se <- as_tibble(year_diff_means_dm) %>% rename(year = term)
+
+p_event_sqb <- year_diff_means_se %>% 
+  ggplot() + 
+  geom_point(aes(x = year, y = estimate), size = 2) + 
+  geom_line(aes(x = year, y = estimate)) + 
+  geom_errorbar(aes(x = year, ymin = conf.low, ymax = conf.high),
+                col = "black", width = 0) +
+  geom_hline(yintercept = 0, lty = 2) + 
+  geom_vline(xintercept = 2016.5,  col = "grey30", linetype = 3) +
+  geom_text(x = 2016.7, y = 0.15, label = "Program\nintroduction", check_overlap = TRUE,
+            col = "grey30", hjust = 0, size = 3, family = "Segoe UI") +
+  theme_minimal(11) + 
+  scale_x_continuous(limits = c(2014.5, 2020.5), breaks = 2015:2020) +
+  scale_y_continuous(breaks = seq(-1,0.2,0.2), limits = c(-0.95, 0.2)) +
+  theme(text = element_text(family = "Segoe UI"),
+        axis.title.y = element_markdown(),
+        panel.grid.minor.y = element_blank(),
+        panel.grid.minor.x = element_blank(),
+        panel.grid.major.x = element_blank()) + 
+  labs(y = "Estimated<br>DiD (Reference year: 2016) (logit)<br><span style = 'font-size:8pt'>for average quality indicator and hospital",
+       x = "Year")
+
+# distribution of random effects
+p_re_sqb <- tibble(random_eff = random_eff) %>% 
+  ggplot() + 
+  geom_histogram(aes(x = random_eff), col = "white", fill = "grey30", bins = 25, linewidth = 0.25) + 
+  theme_minimal(11) + 
+  theme(text = element_text(family = "Segoe UI")) + 
+  labs(y = "Frequency", x = "Estimated hospital effect")
+
+png("results/figure_alternative_analysis.png", width = 3500, height = 1300, res = 390)
+p_re_sqb + p_event_sqb + plot_annotation(tag_levels = "A") &
+  theme(plot.tag = element_text(face = 'bold'))
 dev.off()
 
 #############################

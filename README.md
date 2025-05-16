@@ -3,12 +3,12 @@
 This repository contains data and analysis code to reproduce results from the article **"Estimating the causal effect of a quality assurance program on quality of care in Germany"**.
 
 <div style="display: flex;"> 
-  <img src="results/figure_did_results.png" style="height: 300px;"> 
+  <img src="results/figure_did_results.png" style="height: 350px;"> 
 </div> 
 
 ## R scripts
 
-R scripts to reproduce all analyses from the article can be found in the `/R` folder. Results are exported to `/results`.
+The R script to reproduce all analyses from the article can be found in the `/R` folder. Results are exported to `/results`.
 
 ## Data dictionary `data_indicators.csv`
 
@@ -26,6 +26,8 @@ In the `/data` folder, the file `data_indicators.csv` contains all data used to 
 |o_adverse   |Number of observed events, rescaled as adverse care events (i.e., reverse coded in case indicator originally measures favorable events) |-                                                  |
 |group       |Treatment group of quality indicator                                                                                                    |-                                                  |
 |n_hospitals |Number of hospitals with a quality indicator result (not included for year 2013, as hospital unit was defined differently)              |Anzahl der Krankenhäuser mit mindestens einem Fall |
+
+In the alternative data set in `data/data_hospitalreports.csv`, the same column names apply. The additional column 'hospital' contains the hospital ID (Institutionskennzeichen).
 
 ## R session info
 
