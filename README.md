@@ -1,6 +1,6 @@
 # qualityprogram
 
-This repository contains data and analysis code to reproduce results from the article **"Estimating the causal effect of a quality assurance program on quality of care in Germany"**.
+This repository contains data and analysis code to reproduce results from the article **"Estimating the causal effect of a quality assurance program on quality of care in Germany"** published in [BMC Health Services Research]([/guides/content/editing-an-existing-page#modifying-front-matter](https://doi.org/10.1186/s12913-025-12939-8)).
 
 <div style="display: flex;"> 
   <img src="results/figure_did_results.png" style="height: 350px;"> 
